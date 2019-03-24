@@ -153,18 +153,6 @@ client.on("message", async message => {
    
   }
 
-  if(command === "changec") {
-  	channel.setName("raid by Des chips mon frr")
-  }
-
-
-
-
-  if(command === "changes") {
-  	serveur.setName("raid par des Chips sataniques")
-  }
-
-
 
   if(command === "purge") {
     // This command removes all messages from all users in the channel, up to 100.
