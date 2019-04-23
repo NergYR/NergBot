@@ -44,7 +44,8 @@ let statuses = [
       `détourne  🎲  `, 
       "https://discord.gg/uyv76uv" ,
       "Endorium Copiright ©️ 2019", 
-      " pour Inviter le bot :https://bit.ly/botnerg"
+      " pour Inviter le bot :https://bit.ly/botnerg",
+      "DéCouvre mon nouveau bot prémium !"
 
      ]
 
@@ -60,10 +61,20 @@ let statuses = [
           }
       })
 
-  }, 3000)
+  }, 30000)
 
-
+  
  
+
+
+
+
+
+
+
+
+
+
 
 
 bot.on("message", async message => {
@@ -129,6 +140,87 @@ bot.on("message", async message => {
   }
   
  
+
+
+  if(command === 'report' ){
+
+    var membre = message.mentions.members.first()
+    var reason = args.slice(1).join(' ');
+
+    var embed = new Discord.RichEmbed()
+        .setAuthor('Report de '+message.author.username)
+        .addField('Membre Report', membre)
+        .addField('Raison', reason)
+        .setFooter(data.footer)
+        .setColor(data.color)
+
+    bot.channels.get('568703168880443393').sendEmbed(embed);
+    message.channel.send(emotes[1] + ' |  Votre report a bien été envoyée avec succès, les modérateurs prendront en charge cette plainte le plus rapidement possible !');
+
+}
+
+
+  if(command === 'start'){
+    var party_launch  = false
+    var number_random = 0;
+    message.reply('Partie Lancé !')
+    var party_launch = true;
+    number_random = Math.floor(Math.random() * (5000 - 0)+ 0)
+    console.log(number_random)
+    if(party_launch = true && message.content != null){
+     if(Number.isInteger(parseInt(message.content))) {
+      
+      if(message.content > number_random){
+      message.reply("Plus petit !")
+
+      }else if(message.content < number_random){
+     message.reply('Plus grand !')
+      }else{
+       message.reply(`Gg a ${message.author} Qui a gagner `)
+       party_launch = false;
+      }
+    }
+  }
+    if(command === 'stopgame') {
+      if(party_launch = true) {
+      message.reply('Partie Stopé')
+      var party_launch = false
+      }else{
+    message.reply("Aucune Partie N'est lancé !")
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   if(command === "bvn") {
@@ -198,19 +290,20 @@ if(command === `infobot`) {
     return message.channel.send(embed);
    };
 
-
-
-   bot.on('guildMemberAdd', member => {
-
-    let serverTag = member.guild.name
-    const welcomechannel = member.guild.channels.find('id', '559806486784507906')
-    const role = member.guild.roles.find("name", "nouveau")    
-    member.addRole(role)
+/*
+   bot.on ('guildMemberAdd', member => {
     var embed = new Discord.RichEmbed()
-    .setColor(0x76D880)
-    .setDescription(`:inbox_tray: <@${member.user.id}> à rejoint ${serverTag}`)
-    return welcomechannel.send({embed})
-});
+    .setTitle("Welcome")
+    .setDescription("Bienvenue")
+    .addField(`Bienvenue ${member.displayName}`,"Je te souhaite une bonne continuation sur nos serveurs ! ")
+    .setColor("RANDOM")
+    .setFooter("Pour plus D'Info Mp Energetiq ! ")
+    member.createDM().then(channel => {
+      return channel.sendEmbed(embed)
+    }).catch(console.error)
+    // On pourrait catch l'erreur autrement ici (l'utilisateur a peut être désactivé les MP)
+  })
+*/
 
 
 
@@ -223,14 +316,7 @@ if(command === `infobot`) {
 
 
 
-
-
-
-
-
-
-
-
+/*
 
 
         //RENAME TOUT LE MONDE EN DESSOUS DU BOT
@@ -427,13 +513,15 @@ if(message.author.id == "316976857016696833")
       .addField(" +say {texte}", "Remplace votre message par celui du bot avec un embed\n")
       .addField("+new/+close","Pour crée un tickets (mais seulement dans le salon tickets pour ouvrir/férmé un ticket")
       .addField("+bvn","Souhaite Bienvenue !")
+      .addField("+servers","Affiche sur Combien de serveur est le bot")
+      .addField('+verif',"Pour avoir accès au reste du serveur")
       .addField("+shop","Affiche le shop")
       .addField("+avatar","Affiche m'avatar de la personne")
       .addField("**Infos** ℹ ","_Bots,Serveur_")
+      .addField("+sondage","Permet de faire Un sondage ! ")
       .addField("+serveurinfo","Donne les information sur le serveur sur lequel vous êtes")
       .addField("+infobot","Donne les Info Sur le Bot")
-      .addField("+bot","Donne l'invitation du bot")
-      .addField("+gen","Vous donnent Tous les commandes de Génération(pour les générer il faut que ton serveur ai un channel qui se nomme 'générateur') ")
+      .addField("+gen","La commande est disponible seulement sur NergBot V3 Prémium")
       .setColor(0x1FDDE3)
 			.setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
 		message.channel.sendEmbed(embed);
@@ -467,9 +555,8 @@ if(command === "servers"){
   if (message.deletable) message.delete();
   var serversEmbed = new Discord.RichEmbed()
       .setColor(0xcee4e6)
-      .setTitle("️️️️️️️️️☠️ NergKING 𝐏𝐫𝐨𝐠𝐫𝐚𝐦𝐦𝐚𝐭𝐢𝐨𝐧𝐬 ️️️️️️️️️☠️")
+      .setTitle("️️️️️️️️️Info Sur le bot")
       .setFooter("© Bot by Energetiq ")
-      .setThumbnail("https://i.imgur.com/b0deTHt.gif")
       .addField("Connecté à ", server_count_guilds + " **servers**")
       .addField("Lis actuellement ", server_count_channels + " **channels**")
       .addField("Devant ", server_count_users + " **utilisateurs**")
@@ -483,21 +570,6 @@ if(command === "servers"){
 
 			
     };
-    if(command === 'WhiteAdd') {
-      message.guild.createChannel('name','WhiteList')
-    }
-
-    if(command === "whitelist") {
-      var embed = new Discord.RichEmbed()
-      .setTitle("Demande de Add WhiteList")
-      .addField(`demande de ${message.author} `,"Pour être Add A la White-List")
-      .setFooter("Votre Demande a été Envoyé !")
-      .setURL('http://endorium.ezcraft.fr')
-      .setColor(0xB40404)
-      channel('WhiteList').message.sendEmbed(embed)
-    
-    }
-
 // avatar  
    if(command === "avatar") { 
      message.reply(message.author.avatarURL)
@@ -553,6 +625,18 @@ if(command === "servers"){
       .setColor("RANDOM")
    message.channel.sendEmbed(embed);
   };
+
+
+  if(command === 'me') {
+    var embed_me = new Discord.RichEmbed()
+      .setTitle("Vos infos")
+      .setFooter('Dev By Energetiq')
+      .addField("Votre ID",`${message.author.id}`)
+      .setThumbnail(message.author.avatarURL)
+      .addField("Compte Crée Le ",``)
+  }
+
+
 //sondage
   if(command === "sondage") {
     let args = message.content.split(" ").slice(1);
@@ -743,7 +827,7 @@ if(command === "verif") {
     var embed = new Discord.RichEmbed()
     .setTitle("Vérification")
     .setDescription("Instruction Pour Pouvoir Accéder au reste du Serveur")
-    .addField("Pou acceder au reste du serveur clic sur ✅ Dans La réaction du bot !","si tu ne te vérifie pas Tu sera Kick dans les plus bref délais !")
+    .addField("Pou acceder au reste du serveur clic sur N'importe quel Réaction  Dans La réaction du bot !","si tu ne te vérifie pas Tu sera Kick dans les plus bref délais !")
     .setColor("RANDOM")
     .setImage("https://cdn.discordapp.com/attachments/564137773603225624/564850872199282688/Capture.PNG")
     .setFooter("Pour plus d'info Mp Mon fondateur ! BFR عизrgetiq#9348!")
@@ -783,7 +867,7 @@ var embed = new Discord.RichEmbed()
 message.channel.sendEmbed(embed);
 }
 
-
+/*
 bot.on('message', msg => {
     if(msg.author.bot) return;
 
@@ -1116,6 +1200,49 @@ bot.on('message', msg => {
 
   if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
 
+  if (msg.content === '+cc') { //commande a exécuté
+    if (msg.channel.name === "générateur"){ //obligatoirement dans un salon qui se nome générateur (vous pouvez le modifier)
+
+var answers = [
+
+//il faut mettre tout les compte entre des ' ' !
+"5485128004817427|04|2022|400",
+"5485123432133521|08|2022|556",
+"5485125845746377|02|2022|618",
+"5485127377652080|01|2022|245",
+"5485128711130809|10|2022|517",
+"5485123780510056|02|2022|604",
+"5485126231068723|02|2022|636",
+"5485128146818101|06|2022|755",
+"5485124870407062|03|2022|200",
+"5485120125521343|01|2022|263",
+"5485123751853626|05|2022|012",
+"5485122216477880|06|2022|288",
+"5485122006043553|07|2022|606",
+"5485123463778509|04|2022|157"
+    //ne pas mettre de virgule "," pour le dernier compte 
+];
+
+let randomAnswerPicker = answers[Math.floor(Math.random() * answers.length)];
+  const embed = new Discord.RichEmbed()
+  .setFooter("Copyright © 2019 Endorium")
+  .addField('Voici ta Carte Bleu(attention elles ne sont pas garantit !): ',
+  randomAnswerPicker)
+      .setColor("RANDOM")
+      .setImage("")
+      .setTimestamp(30000)
+msg.channel.send(`**ton compte a bien été généré va voir tes mp **📥🔖`);
+msg.author.send({embed})
+}
+
+}
+});
+
+bot.on('message', msg => {
+  if(msg.author.bot) return;
+
+  if(msg.channel.type === "dm") return; //empeche d'exécuter les commandes en dm
+
   if (msg.content === '+spotify') { //commande a exécuté
     if (msg.channel.name === "générateur"){ //obligatoirement dans un salon qui se nome générateur (vous pouvez le modifier)
 
@@ -1201,7 +1328,7 @@ msg.author.send({embed})
 
 }
 });
-
+*/
  
 
   if(command === "cagnotte") {
